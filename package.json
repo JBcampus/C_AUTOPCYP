@@ -1,0 +1,18 @@
+{
+  "name": "cypress-e2e",
+  "version": "1.0.0",
+  "description": "Proyecto de automatización E2E con Cypress y TypeScript",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx playground/clase1/taller1.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "Jenny Lopez",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  }
+}
