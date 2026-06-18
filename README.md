@@ -17,3 +17,12 @@ npm run dev
 
 Validar tipos:
 npm run typecheck
+
+Ejecución del runner cypress:
+npm run cy:open
+
+Ejecución en terminal con navegador:
+npm run cy:run:headed
+
+Ejecución del taller 2:
+npm run cy:run:taller2
