@@ -6,11 +6,18 @@ Cypress y TypeScript.
 - cypress/fixtures/: datos estáticos de prueba.
 - cypress/pages/: Page Objects.
 - cypress/helpers/: funciones reutilizables.
-- cypress/support/: configuración global de Cypress.
+- cypress/support/: configuración global de Cypress. 
 - playground/: ejemplos académicos del curso.
 - artifacts/: evidencias, videos, screenshots y reportes.
+  
 ## Scripts iniciales
 Ejecutar ejemplo TypeScript:
 npm run dev
 Validar tipos:
 npm run typecheck
+Ejecución del runner cypress:
+npm run cy:open
+Ejecución en terminal con navegador:
+npm run cy:run:headed
+Ejecución del taller 2:
+npm run cy:run:taller2
