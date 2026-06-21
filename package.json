@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx playground/clase1/taller1.ts",
+<<<<<<< HEAD
     "typecheck": "tsc --noEmit",
     "cy:open": "cypress open", 
     "cy:open:e2e": "cypress open --e2e", 
@@ -29,3 +30,12 @@
     "typescript": "^6.0.3"
   }
 }
+=======
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "Carlos R.",
+  "license": "ISC"
+}
+sta
+>>>>>>> d4f3d6c (test: clase 1 - strutura base, configurvion inicial)

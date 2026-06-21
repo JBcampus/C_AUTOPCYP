@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+<<<<<<< HEAD
     "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "Bundler",
@@ -12,3 +13,17 @@
   "include": ["playground/**/*.ts", "cypress/**/*.ts"],
   "exclude": ["node_modules", "artifacts"]
 }
+=======
+"target": "ES2022",
+"module": "ESNext",
+"moduleResolution": "Bundler",
+"strict": true,
+"esModuleInterop": true,
+"forceConsistentCasingInFileNames": true,
+"skipLibCheck": true,
+"types": ["node"]
+},
+"include": ["playground/**/*.ts", "cypress/**/*.ts"],
+"exclude": ["node_modules", "artifacts"]ßß
+}
+>>>>>>> d4f3d6c (test: clase 1 - strutura base, configurvion inicial)

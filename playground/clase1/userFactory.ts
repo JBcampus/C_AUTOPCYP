@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { LoginCredentials, LoginExpectedResult } from './types' 
  
 /** 
@@ -14,3 +15,21 @@ export const buildUser = (
     expectedResult, 
   } 
 } 
+=======
+import type { LoginCredentials, LoginExpectedResult } from './types'
+/** 
+* Construye un usuario de prueba para escenarios de login.
+*/
+export const buildUser = (
+username: string,
+password: string,
+expectedResult: LoginExpectedResult
+
+): LoginCredentials => {
+return {
+username,
+password,
+expectedResult,
+}
+}
+>>>>>>> d4f3d6c (test: clase 1 - strutura base, configurvion inicial)
