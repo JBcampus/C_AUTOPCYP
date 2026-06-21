@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { buildUser } from './userFactory' 
 import type { LoginCredentials } from './types' 
  
@@ -61,50 +62,61 @@ console.log('Usuario seleccionado:', selectedUser?.username)
 =======
 import { buildUser } from "./userFactory";
 import type { LoginCredentials } from "./types";
+=======
+import { buildUser } from './userFactory'
+import type { LoginCredentials } from './types'
+>>>>>>> 9f30607 (test(e2e): clase 2 - setup de cypress y primeros tests)
 // Tipos primitivos
-const baseUrl: string = "https://www.saucedemo.com";
-const maxAttempts: number = 3;
-const isAutomationProject: boolean = true;
+const baseUrl: string = 'https://www.saucedemo.com'
+const maxAttempts: number = 3
+const isAutomationProject: boolean = true
 // Tipos especiales básicos
-let errorMessage: string | null = null;
-let selectedUser: LoginCredentials | undefined;
+let errorMessage: string | null = null
+let selectedUser: LoginCredentials | undefined
+
 // Objetos tipados
 const validUser: LoginCredentials = {
-  username: "standard_user",
-  password: "secret_sauce",
-  expectedResult: "success",
-};
+username: 'standard_user',
+password: 'secret_sauce',
+expectedResult: 'success',
+}
 // Arrays tipados
 const users: LoginCredentials[] = [
-  validUser,
-  buildUser("locked_out_user", "secret_sauce", "locked"),
-  buildUser("problem_user", "secret_sauce", "success"),
-  buildUser("invalid_user", "wrong_password", "invalid"),
-];
+validUser,
+buildUser('locked_out_user', 'secret_sauce', 'locked'),
+buildUser('problem_user', 'secret_sauce', 'success'),
+buildUser('invalid_user', 'wrong_password', 'invalid'),
+]
 // Función tipada tradicional
 function printProjectInfo(url: string, attempts: number): void {
-  console.log(`URL base del proyecto: ${url}`);
-  console.log(`Número máximo de intentos: ${attempts}`);
+console.log(`URL base del proyecto: ${url}`)
+console.log(`Número máximo de intentos: ${attempts}`)
 }
 // Arrow function tipada
 const printUser = (user: LoginCredentials): void => {
-  console.log("------------------------------");
-  console.log(`Usuario: ${user.username}`);
-  console.log(`Resultado esperado: ${user.expectedResult}`);
-};
+console.log('------------------------------')
+console.log(`Usuario: ${user.username}`)
+console.log(`Resultado esperado: ${user.expectedResult}`)
+}
 // Condicionales
 if (isAutomationProject) {
-  console.log("Proyecto de automatización E2E iniciado correctamente");
+console.log('Proyecto de automatización E2E iniciado correctamente')
 }
 // Recorrido de arrays
 for (const user of users) {
-  printUser(user);
-  if (user.expectedResult === "locked") {
-    errorMessage = "El sistema debe mostrar usuario bloqueado";
-    selectedUser = user;
-  }
+printUser(user)
+if (user.expectedResult === 'locked') {
+errorMessage = 'El sistema debe mostrar usuario bloqueado'
+selectedUser = user
 }
+}
+<<<<<<< HEAD
 printProjectInfo(baseUrl, maxAttempts);
 console.log("Mensaje de error esperado:", errorMessage);
 console.log("Usuario seleccionado:", selectedUser?.username);
 >>>>>>> d4f3d6c (test: clase 1 - strutura base, configurvion inicial)
+=======
+printProjectInfo(baseUrl, maxAttempts)
+console.log('Mensaje de error esperado:', errorMessage)
+console.log('Usuario seleccionado:', selectedUser?.username)
+>>>>>>> 9f30607 (test(e2e): clase 2 - setup de cypress y primeros tests)
