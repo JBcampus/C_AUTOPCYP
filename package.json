@@ -5,8 +5,6 @@
   "type": "module",
   "scripts": {
     "dev": "tsx playground/clase1/taller1.ts",
-<<<<<<< HEAD
-<<<<<<< HEAD
     "typecheck": "tsc --noEmit",
     "cy:open": "cypress open", 
     "cy:open:e2e": "cypress open --e2e", 
@@ -46,7 +44,6 @@
       "cy:run:headed": "npm run cy:run:edge -- --headed",
       "cy:run:taller2": "npm run cy:run:headed -- --spec 'cypress/e2e/clase2/taller2.cy.ts'",
       "cy:run:taller2:debug": "npm run cy:run:taller2 -- --no-exit"
->>>>>>> 9f30607 (test(e2e): clase 2 - setup de cypress y primeros tests)
   },
   "keywords": [],
   "author": "Dimelsa",
@@ -57,8 +54,3 @@
     "typescript": "^6.0.3"
   }
 }
-<<<<<<< HEAD
-sta
->>>>>>> d4f3d6c (test: clase 1 - strutura base, configurvion inicial)
-=======
->>>>>>> 9f30607 (test(e2e): clase 2 - setup de cypress y primeros tests)
