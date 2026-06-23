@@ -53,5 +53,5 @@ it("debería limpiar los campos usando el botón Clear Inputs", () => {
   cy.get("@numberInput").should("have.value", "");
   cy.get("@textInput").should("have.value", "");
   cy.get("@passwordInput").should("have.value", "");
-  cy.get("@dateInput").should("have.value", "123");
+  cy.get("@dateInput").should("have.value", "");
 });
