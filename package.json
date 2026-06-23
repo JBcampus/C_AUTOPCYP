@@ -29,28 +29,3 @@
     "typescript": "^6.0.3"
   }
 }
-=======
-    "typecheck": "tsc --noEmit"
-=======
-    "typecheck": "tsc --noEmit",
-    "cy:open": "cypress open",
-      "cy:open:e2e": "cypress open --e2e",
-      "cy:open:chrome": "cypress open --e2e --browser chrome",
-      "cy:open:edge": "cypress open --e2e --browser edge",
-      "cy:open:electron": "cypress open --e2e --browser electron",
-      "cy:run": "cypress run --e2e",
-      "cy:run:chrome": "cypress run --e2e --browser chrome",
-      "cy:run:edge": "cypress run --e2e --browser edge",
-      "cy:run:headed": "npm run cy:run:edge -- --headed",
-      "cy:run:taller2": "npm run cy:run:headed -- --spec 'cypress/e2e/clase2/taller2.cy.ts'",
-      "cy:run:taller2:debug": "npm run cy:run:taller2 -- --no-exit"
-  },
-  "keywords": [],
-  "author": "Dimelsa",
-  "license": "ISC",
-  "main": "index.js",
-  "devDependencies": {
-    "cypress": "^15.17.0",
-    "typescript": "^6.0.3"
-  }
-}

@@ -1,9 +1,9 @@
 it("debería abrir la página de Web Inputs", () => {
-<<<<<<< HEAD
+
   cy.visit("/inputs"); //se le está pasando una ruta relativa
-=======
+
   cy.visit("/inputs");
->>>>>>> 9f30607 (test(e2e): clase 2 - setup de cypress y primeros tests)
+
   cy.contains("h1", "Web inputs page for Automation Testing Practice").should(
     "be.visible",
   );
@@ -37,10 +37,6 @@ it("debería completar campos básicos de entrada", () => {
   cy.get("@numberInput").should("have.value", "25");
   cy.get("@textInput").should("have.value", "Carlos QA");
   cy.get("@passwordInput").should("have.value", "secret123");
-<<<<<<< HEAD
-
-=======
->>>>>>> 9f30607 (test(e2e): clase 2 - setup de cypress y primeros tests)
   cy.get("@dateInput").should("have.value", "2026-06-17");
 });
 
@@ -60,9 +56,8 @@ it("debería limpiar los campos usando el botón Clear Inputs", () => {
   //Acción de click
   cy.contains("button", "Clear Inputs").click();
 
-  cy.get("@numberInput").should("have.value", "123");
+  cy.get("@numberInput").should("have.value", "");
   cy.get("@textInput").should("have.value", "");
   cy.get("@passwordInput").should("have.value", "");
   cy.get("@dateInput").should("have.value", "");
->>>>>>> 9f30607 (test(e2e): clase 2 - setup de cypress y primeros tests)
 });

@@ -10,5 +10,5 @@
 "types": ["node"]
 },
 "include": ["playground/**/*.ts", "cypress/**/*.ts"],
-"exclude": ["node_modules", "artifacts"]ßß
+"exclude": ["node_modules", "artifacts"]
 }
