@@ -27,3 +27,6 @@ npm run cy:run:headed
 
 Ejecución del taller 2:npm run cy:
 run:taller2
+
+Ejecución de la tarea 1:npm run cy:
+run:tarea1
