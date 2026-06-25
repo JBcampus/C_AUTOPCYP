@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 import { buildUser } from './userFactory' 
 import type { LoginCredentials } from './types' 
  
@@ -59,13 +58,13 @@ printProjectInfo(baseUrl, maxAttempts)
  
 console.log('Mensaje de error esperado:', errorMessage) 
 console.log('Usuario seleccionado:', selectedUser?.username)
-=======
+
 import { buildUser } from "./userFactory";
 import type { LoginCredentials } from "./types";
-=======
+
 import { buildUser } from './userFactory'
 import type { LoginCredentials } from './types'
->>>>>>> 9f30607 (test(e2e): clase 2 - setup de cypress y primeros tests)
+
 // Tipos primitivos
 const baseUrl: string = 'https://www.saucedemo.com'
 const maxAttempts: number = 3
@@ -110,13 +109,3 @@ errorMessage = 'El sistema debe mostrar usuario bloqueado'
 selectedUser = user
 }
 }
-<<<<<<< HEAD
-printProjectInfo(baseUrl, maxAttempts);
-console.log("Mensaje de error esperado:", errorMessage);
-console.log("Usuario seleccionado:", selectedUser?.username);
->>>>>>> d4f3d6c (test: clase 1 - strutura base, configurvion inicial)
-=======
-printProjectInfo(baseUrl, maxAttempts)
-console.log('Mensaje de error esperado:', errorMessage)
-console.log('Usuario seleccionado:', selectedUser?.username)
->>>>>>> 9f30607 (test(e2e): clase 2 - setup de cypress y primeros tests)
