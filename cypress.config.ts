@@ -1,7 +1,8 @@
 import { defineConfig } from "cypress";
+import { allureCypress } from "allure-cypress/reporter";
 
 export default defineConfig({
-  allowCypressEnv: false,
+  allowCypressEnv: true,
 
   screenshotsFolder: "artifacts/screenshots",
   videosFolder: "artifacts/videos",
@@ -12,9 +13,14 @@ export default defineConfig({
 
   e2e: {
     baseUrl: "https://practice.expandtesting.com",
+    //baseUrl: "https://www.saucedemo.com",
     viewportWidth: 1280,
     setupNodeEvents(on, config) {
       // implement node event listeners here
+      allureCypress(on, config, {
+        resultsDir: "artifacts/allure-results",
+      });
+      return config;
     },
   },
 });
