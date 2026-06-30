@@ -1,0 +1,26 @@
+[
+  {
+    "caseName": "login valido",
+    "type": "positive",
+    "username": "practice",
+    "password": "SuperSecretPassword!",
+    "expectedPath": "/secure",
+    "expectedMessage": "You logged into a secure area!"
+  },
+  {
+    "caseName": "usuario invalido",
+    "type": "negative",
+    "username": "usuario_invalido",
+    "password": "SuperSecretPassword!",
+    "expectedPath": "/login",
+    "expectedMessage": "Your username is invalid!"
+  },
+  {
+    "caseName": "password invalido",
+    "type": "negative",
+    "username": "practice",
+    "password": "password_invalido",
+    "expectedPath": "/login",
+    "expectedMessage": "Your password is invalid!"
+  }
+]
