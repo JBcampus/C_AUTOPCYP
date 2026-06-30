@@ -1,6 +1,6 @@
 import * as allure from "allure-js-commons";
 import { createPracticeUserSession } from "../../helpers/auth-session.helper";
-import { attachScreenshotOnError } from "../../helpers/allure-evidence.helper";
+import { attachScreenshotOnError } from "../../helpers/allure-git push -u origin alumno/”alias”evidence.helper";
 describe("Clase 5 - Secure Area con cy.session", () => {
   afterEach(function () {
     if (this.currentTest?.state === "failed") {
