@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-
+      
       - name: Setup Node
         uses: actions/setup-node@v5
         with:
@@ -26,10 +26,12 @@ jobs:
       - name: Instalar deps
         run: npm ci
 
-      - name: Run Cypress E2E and generate
+      - name: Run Cypress E2E
         run: npm run cy:run:taller5:spec2
-        run: npm run allure:generate
 
+      - name: Generate
+        run: npm run allure:generate
+      
       - name: Upload artifacts reports and screenshots
         if: always()
         uses: actions/upload-artifact@v5
