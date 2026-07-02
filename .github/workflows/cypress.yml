@@ -24,7 +24,7 @@ jobs:
           cache: "npm"
 
       - name: Instalar deps
-        run: npm run allure:generate
+        run: npm ci
 
       - name: Run Cypress E2E
         run: npm run cy:run:taller5:spec2
