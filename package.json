@@ -20,7 +20,7 @@
     "cy:run:taller2:debug": "npm run cy:run:taller2 -- --no-exit",
     "cy:run:taller4:spec2": "npm run cy:run:headed -- --spec 'cypress/e2e/clase4/dropdown-colecciones.cy.ts'",
     "cy:run:taller4:spec3": "npm run cy:run:edge -- --spec 'cypress/e2e/clase4/login-pom-intercept.cy.ts'",
-    "cy:run:taller5:spec1": "npm run allure:clean && npm run cy:run:headed -- --spec 'cypress/e2e/clase5/01-login-fixture.cy.ts'",
+    "cy:run:taller5:spec1": "npm run allure:clean & npm run cy:run:headed -- --spec \"cypress/e2e/clase5/01-login-fixture.cy.ts\" & npm run allure:generate & npm run allure:open",
     "cy:run:taller5:spec2": "npm run cy:run:headed -- --spec 'cypress/e2e/clase5/02-login-data-driven-allure.cy.ts'",
     "cy:run:taller5:spec3": "npm run cy:run:headed -- --spec 'cypress/e2e/clase5/03-secure-area-session.cy.ts'",
     "allure:generate": "npx allure generate --output artifacts/allure-report",
@@ -35,6 +35,7 @@
     "allure": "^3.13.2",
     "allure-cypress": "^3.10.2",
     "cypress": "^15.17.0",
+    "cypress-mochawesome-reporter": "^4.0.2",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3"
   }
