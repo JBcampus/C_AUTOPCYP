@@ -41,6 +41,10 @@ it("debería completar campos básicos de entrada", () => {
 });
 
 it("debería limpiar los campos usando el botón Clear Inputs", () => {
+
+  cy.addTestContext("Contexto: Taller6 - Limpiar campos de entrada");
+  cy.addTestContext("Ejecucion con error");
+  
   cy.visit("/inputs");
 
   cy.get('input[type="number"]').as("numberInput");
@@ -60,4 +64,7 @@ it("debería limpiar los campos usando el botón Clear Inputs", () => {
   cy.get("@textInput").should("have.value", "");
   cy.get("@passwordInput").should("have.value", "");
   cy.get("@dateInput").should("have.value", "");
-});
+
+
+  
+  });
