@@ -26,8 +26,10 @@ jobs:
       - name: Instalar deps
         run: npm ci
 
-      - name: Run Cypress E2E and generate
+      - name: Run Cypress E2E
         run: npm run cy:run:taller5:spec2
+
+      - name: Generate
         run: npm run allure:generate
       
       - name: Upload artifacts reports and screenshots
