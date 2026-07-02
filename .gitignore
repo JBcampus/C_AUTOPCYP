@@ -2,7 +2,7 @@
 node_modules/
  
 # Salida de ejecución
-artifacts/
+#artifacts/
  
 # Reportes
 reports/
