@@ -27,7 +27,8 @@ jobs:
         run: npm ci
 
       - name: Run Cypress E2E
-        run: npm run cy:run:taller5:spec1
+        run: npm run cy:run:taller5:spec2
+        run: npm run allure:generate
       
       - name: Upload artifacts reports and screenshots
         if: always()
