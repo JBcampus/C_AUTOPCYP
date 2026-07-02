@@ -23,6 +23,7 @@
     "cy:run:taller5:spec1": "npm run cy:run:headed -- --spec 'cypress/e2e/clase5/01-login-fixture.cy.ts'",
     "cy:run:taller5:spec2": "npm run cy:run:headed -- --spec 'cypress/e2e/clase5/02-login-data-driven-allure.cy.ts'",
     "cy:run:taller5:spec3": "npm run cy:run:headed -- --spec 'cypress/e2e/clase5/03-secure-area-session.cy.ts'",
+    "cy:run:tarea2": "npm run cy:run:headed -- --spec 'cypress/e2e/tarea2/**/*.cy.ts'",
     "allure:generate": "npx allure generate --output artifacts/allure-report",
     "allure:open": "npx allure open artifacts/allure-report",
     "allure:clean": "if exist artifacts\\allure-report rmdir /s /q artifacts\\allure-report"

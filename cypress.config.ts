@@ -22,8 +22,8 @@ export default defineConfig({
   },
 
   e2e: {
-    baseUrl: "https://practice.expandtesting.com",
-    //baseUrl: "https://www.saucedemo.com",
+    //baseUrl: "https://practice.expandtesting.com",
+    baseUrl: "https://www.saucedemo.com",
     viewportWidth: 1280,
     setupNodeEvents(on, config) {
       // implement node event listener here
