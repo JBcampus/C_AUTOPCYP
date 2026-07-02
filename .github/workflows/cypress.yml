@@ -2,7 +2,7 @@ name: CI Cypress
 
 on:
   push:
-    branches: ["alumno/"]
+    branches: ["alumno/damaro"]
   pull_request:
     branches: ["dev"]
 
