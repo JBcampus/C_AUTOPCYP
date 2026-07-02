@@ -35,6 +35,7 @@
     "allure": "^3.13.2",
     "allure-cypress": "^3.10.2",
     "cypress": "^15.17.0",
+    "cypress-mochawesome-reporter": "^4.0.2",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3"
   }

@@ -1,5 +1,6 @@
 import { defineConfig } from "cypress";
 import { allureCypress } from 'allure-cypress/reporter'
+import mochawesomeReporter from 'cypress-mochawesome-reporter/plugin'
 
 export default defineConfig({
   allowCypressEnv: true,
@@ -11,6 +12,15 @@ export default defineConfig({
   video: false,
   trashAssetsBeforeRuns: true,
 
+  reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    reportDir: 'artifacts/mochawesome-report',
+    charts: true,
+    reportPageTitle: 'JB Reporte Cypress E2E',
+    embeddedScreenshots: true,
+    overwrite:false
+  },
+
   e2e: {
     baseUrl: "https://practice.expandtesting.com",
     //baseUrl: "https://www.saucedemo.com",
@@ -20,6 +30,7 @@ export default defineConfig({
       allureCypress(on, config, {
         resultsDir: 'artifacts/allure-results',
       })
+      mochawesomeReporter(on)
       return config
     },
   },
