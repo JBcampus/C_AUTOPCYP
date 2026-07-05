@@ -1,24 +1,24 @@
 import { defineConfig } from "cypress";
-import { allureCypress } from 'allure-cypress/reporter'
-import mochawesomeReporter from 'cypress-mochawesome-reporter/plugin'
+import { allureCypress } from "allure-cypress/reporter";
+import mochawesomeReporter from "cypress-mochawesome-reporter/plugin";
 
 export default defineConfig({
   allowCypressEnv: true,
 
-  screenshotsFolder: "artifacts/screenshots",
+  screenshotsFolder: "artifacts/integrador",
   videosFolder: "artifacts/videos",
   downloadsFolder: "artifacts/downloads",
   screenshotOnRunFailure: true,
   video: false,
   trashAssetsBeforeRuns: true,
 
-  reporter: 'cypress-mochawesome-reporter',
+  reporter: "cypress-mochawesome-reporter",
   reporterOptions: {
-    reportDir: 'artifacts/mochawesome-report',
+    reportDir: "artifacts/integrador",
     charts: true,
-    reportPageTitle: 'JB Reporte Cypress E2E',
+    reportPageTitle: "JB Reporte Cypress E2E",
     embeddedScreenshots: true,
-    overwrite:false
+    overwrite: false,
   },
 
   e2e: {
@@ -28,10 +28,10 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listener here
       allureCypress(on, config, {
-        resultsDir: 'artifacts/allure-results',
-      })
-      mochawesomeReporter(on)
-      return config
+        resultsDir: "artifacts/allure-results",
+      });
+      mochawesomeReporter(on);
+      return config;
     },
   },
 });
