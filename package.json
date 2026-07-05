@@ -33,7 +33,7 @@
   "author": "Daniel V.",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^25.9.3",
+    "@types/node": "^25.9.4",
     "allure": "^3.13.2",
     "allure-cypress": "^3.10.2",
     "cypress": "^15.17.0",
