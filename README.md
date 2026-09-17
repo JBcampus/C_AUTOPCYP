@@ -14,8 +14,17 @@ Proyecto independiente para automatización de pruebas End-to-End usando Cypress
 
 ## Scripts iniciales
 
-- Ejecutar ejemplo TypeScript:  
-  npm run dev
+Ejecutar ejemplo TypeScript:  
+npm run dev
 
-- Validar tipos:  
-  npm run typecheck
+Validar tipos:  
+npm run typecheck
+
+Ejecución del runner cypress:
+npm run cy:open
+
+Ejecución en terminal con navegador:
+npm run cy:run:headed
+
+Ejecución del taller 2:
+npm run cy:run:taller2
