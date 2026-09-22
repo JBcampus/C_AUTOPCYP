@@ -1,0 +1,9 @@
+{
+  "validInput": {
+    "number": "25",
+    "text": "Carlos QA",
+    "password": "secret123",
+    "date": "2026-06-17"
+  },
+  "expected": { "titleContains": "Web inputs" }
+}
