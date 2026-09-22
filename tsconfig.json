@@ -7,7 +7,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "types": ["node"]
+    "types": ["cypress", "node"]
   },
   "include": ["playground/**/*.ts", "cypress/**/*.ts"],
   "exclude": ["node_modules", "artifacts"]

@@ -19,3 +19,12 @@ Proyecto independiente para automatización de pruebas End-to-End usando Cypress
 
 - Validar tipos:  
   npm run typecheck
+
+## Tarea 1
+
+npm run tarea1
+
+## Clase 3:
+
+npm run cy:run:headed -- --spec "cypress/e2e/clase3/inputs-hooks.cy.ts"
+npm run cy:run:headed -- --spec 'cypress/e2e/clase3/inputs-fixture.cy.ts'
