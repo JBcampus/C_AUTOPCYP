@@ -14,4 +14,13 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import "./commands";
+
+beforeEach(() => {
+    cy.log("Iniciando bloqueo de publicidad");
+    cy.intercept("**/adtrafficquality.google/**", (req) => {
+        req.destroy();
+    });
+    cy.log("Finalizando bloqueo de publicidad");
+    cy.log("Iniciando test");
+});

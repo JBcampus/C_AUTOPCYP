@@ -6,7 +6,7 @@ export default defineConfig({
   videosFolder: "artifacts/videos",
   downloadsFolder: "artifacts/downloads",
   screenshotOnRunFailure: true,
-  video: false,
+  video: true,
   trashAssetsBeforeRuns: true,
   
   e2e: {
