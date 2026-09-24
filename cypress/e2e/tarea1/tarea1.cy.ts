@@ -1,7 +1,6 @@
 it("Test 01: Iniciar Sesion Sauce Demo con usuario válido", () => {
-  
   //PASO 1: Navega a la pagina SauceDemo.com
-  cy.visit("/");
+  cy.visit(Cypress.expose("baseUrl_SD"));
   cy.url().should("include", "saucedemo.com");
 
   //PASO 2: Autenticarse con credenciales válidas
@@ -23,13 +22,12 @@ it("Test 01: Iniciar Sesion Sauce Demo con usuario válido", () => {
 
   //PASO 3: Validar url ‘/inventory.html’ y título secundario ‘Products’
   cy.url().should("include", "/inventory.html");
-  cy.get('[data-test="title"]').should('be.visible');
+  cy.get('[data-test="title"]').should("be.visible");
 });
 
 it("Test 02: Iniciar Sesion Sauce Demo con usuario bloqueado", () => {
-  
   //PASO 1: Navega a la pagina SauceDemo.com
-  cy.visit("/");
+  cy.visit(Cypress.expose("baseUrl_SD"));
   cy.url().should("include", "saucedemo.com");
 
   //PASO 2: Autenticarse con credenciales válidas
@@ -51,5 +49,7 @@ it("Test 02: Iniciar Sesion Sauce Demo con usuario bloqueado", () => {
 
   //PASO 3: Validar url ‘/inventory.html’ y título secundario ‘Products’
   cy.url().should("include", "saucedemo.com");
-  cy.get('[data-test="error"]').should('be.visible').contains("Epic sadface: Sorry, this user has been locked out.");
+  cy.get('[data-test="error"]')
+    .should("be.visible")
+    .contains("Epic sadface: Sorry, this user has been locked out.");
 });

@@ -19,7 +19,8 @@
     "cy:run:taller2:debug": "npm run cy:run:taller2 -- --no-exit",
     "tarea1": "npm run cy:open 'cypress/e2e/tarea1/tarea1.cy.ts'",
     "tarea1:headed": "npm run cy:run:headed -- --spec 'cypress/e2e/tarea1/tarea1.cy.ts'",
-    "cy:run:taller3:debug": "npm run cy:run:headed -- --spec 'cypress/e2e/clase3/input-class.cy.ts' --no-exit"
+    "cy:run:taller3:debug": "npm run cy:run:headed -- --spec 'cypress/e2e/clase3/input-class.cy.ts' --no-exit",
+    "tarea2": "npm run cy:open 'cypress/e2e/tarea2/tarea2.cy.ts'"
   },
   "keywords": [],
   "author": "Sergio Barrios",

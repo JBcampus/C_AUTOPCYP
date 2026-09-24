@@ -28,3 +28,13 @@ npm run tarea1
 
 npm run cy:run:headed -- --spec "cypress/e2e/clase3/inputs-hooks.cy.ts"
 npm run cy:run:headed -- --spec 'cypress/e2e/clase3/inputs-fixture.cy.ts'
+
+## Tarea 2
+
+npm run tarea2
+
+## Clase 4
+
+npm run cy:run:headed -- --spec 'cypress/e2e/clase4/inputs-estabilidad.cy.ts'
+npm run cy:run:headed -- --spec 'cypress/e2e/clase4/dropdown-colecciones.cy.ts'
+npm run cy:run:headed -- --spec 'cypress/e2e/clase4/login-pom-intercept.cy.ts'
