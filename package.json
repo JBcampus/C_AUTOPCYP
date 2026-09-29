@@ -18,13 +18,19 @@
     "cy:run:taller2": "npm run cy:run:headed -- --spec 'cypress/e2e/clase2/taller2.cy.ts'",
     "cy:run:taller2:debug": "npm run cy:run:taller2 -- --no-exit",
     "cy:run:tarea1": "npm run cy:run:headed -- --spec 'cypress/e2e/tarea1/tarea1.cy.ts'",
-    "cy:run:taller3:debug": "npm run cy:run:headed -- --spec 'cypress/e2e/clase3/input-class.cy.ts' --no-exit"
+    "cy:run:taller3:debug": "npm run cy:run:headed -- --spec 'cypress/e2e/clase3/input-class.cy.ts' --no-exit",
+    "cy:run:tarea2": "npm run cy:run:headed -- --spec 'cypress/e2e/tarea2/tarea2.cy.ts' --no-exit",
+    "cy:run:taller5:spec1": "npm run cy:run -- --spec 'cypress/e2e/clase5/01-login-fixture.cy.ts'",
+    "cy:run:taller5:spec2": "npm run cy:run -- --spec 'cypress/e2e/clase5/02-login-data-drive-allure.cy.ts'",
+    "allure:generate": "node --input-type=module -e \"import { rmSync } from 'node:fs'; rmSync('artifacts/allure-report', { recursive: true, force: true });\" && npx allure generate artifacts/allure-results --output artifacts/allure-report --open"
   },
   "keywords": [],
   "author": "Adelina B.",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^26.5.1",
+    "allure": "^3.19.0",
+    "allure-cypress": "^3.13.0",
     "cypress": "^16.1.0",
     "tsx": "^4.23.13",
     "typescript": "^7.0.2"
