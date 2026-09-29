@@ -1,82 +1,42 @@
-interface CasesFixture {
-  casos_agregar_producto: {
-    caso: string;
-    orden: string;
-    indice_producto: number;
-    producto_esperado: string;
-    cantidad_esperada: string;
-  };
-}
+import { Login_Page } from "../../pages/SauceDemo/tarea2/Login_Page";
+import { Inventory_Page } from "../../pages/SauceDemo/tarea2/Inventory_Page";
+import { CheckOut_Page } from "../../pages/SauceDemo/tarea2/CheckOut_Page";
 
-describe("Web Inputs con fixture", () => {
+const login_Page = new Login_Page();
+const inventory_Page = new Inventory_Page();
+const checkout_Page = new CheckOut_Page();
+
+describe("SauceDemo Automatizacion", () => {
+  before(() => {
+    cy.log("#Inicio de suite: SauceDemo Automatizacion");
+    //cargamos los datos de prueba de productos y usuario
+    cy.fixture("tarea2/data_cases.json").as("data_cases");
+    cy.fixture("tarea2/data_user.json").as("data_user");
+  });
   beforeEach(() => {
-    //abrir pagina principal con variable de entorno
+    cy.log("##Inicio de Caso de Prueba.");
+    //abrir pagina con variable de entorno en "cypress.config.ts": baseUrl_SD: "https://www.saucedemo.com",
     cy.visit(Cypress.expose("baseUrl_SD"));
     cy.url().should("include", "saucedemo.com");
-
-    //guardamos la data en FIXTURE
-    cy.fixture("tarea2/data_cases.json").as("dataCases");
+  });
+  afterEach(() => {
+    cy.log("##Fin de Caso de prueba.");  
+  });
+  after(() => {
+    cy.screenshot("Tarea2_Test01_Compra Producto Exitosa");
+    cy.log("#Fin de suite: SauceDemo Automatizacion");
   });
 
-  it("Test 01: Compra Producto Exitosa", () => {
-    //PASO 1: Navega a la pagina SauceDemo.com
-    //cy.visit(Cypress.expose("baseUrl_SD"));
+  it("Test 01: Compra Producto Exitosa", function () {
+    login_Page.iniciarSesion(this.data_user.usuario,this.data_user.password);
+    login_Page.abrirPaginaInventarioProductos();
 
-    //PASO 2: Autenticarse con credenciales válidas
-    //Almacenar variables con alias
-    cy.get('input[type="text"]').as("Campo_Usuario");
-    cy.get('input[type="password"]').as("Campo_Password");
-    cy.get('input[type="submit"]').as("boton_Login");
-
-    //Completar inputs de tipo texto
-    cy.get("@Campo_Usuario").type("standard_user");
-    cy.get("@Campo_Password").type("secret_sauce");
-
-    //Validar elementos por su alias
-    cy.get("@Campo_Usuario").should("have.value", "standard_user");
-    cy.get("@Campo_Password").should("have.value", "secret_sauce");
-
-    //Presionar Login
-    cy.get("@boton_Login").click();
-
-    //PASO 3: Validar url ‘/inventory.html’ y título secundario ‘Products’
-    cy.url().should("include", "/inventory.html");
-    cy.get('[data-test="title"]').should("be.visible");
-
-    //PASO 4: Ordenar Productos por Nombre A-Z
-    //cy.get('[data-test="product-sort-container"]').select()
-    cy.get("@dataCases").then((fixture) => {
-      const data: CasesFixture = fixture;
-
-      //validamos que la data haya cargado correctamente
-      expect(data.casos_agregar_producto.caso).to.equal("orden_az_agregar_tercer_producto");
-      expect(data.casos_agregar_producto.orden).to.equal("az");
-      expect(data.casos_agregar_producto.indice_producto).to.equal(2);
-      expect(data.casos_agregar_producto.producto_esperado).to.equal(
-        "Sauce Labs Bolt T-Shirt",
-      );
-      expect(data.casos_agregar_producto.cantidad_esperada).to.equal("1");
-
-      /*
-      //ingresamos la data al formulario web
-      cy.contains("h1", data.expected.titleContains).should("be.visible");
-      cy.get('input[type="number"]').type(data.validInput.number);
-      cy.get('input[type="text"]').type(data.validInput.text);
-      cy.get('input[type="password"]').type(data.validInput.password);
-      cy.get('input[type="date"]').type(data.validInput.date);
-
-      //validamos el comportamiento del formulario web
-      cy.get('input[type="number"]').should(
-        "have.value",
-        data.validInput.number,
-      );
-      cy.get('input[type="text"]').should("have.value", data.validInput.text);
-      cy.get('input[type="password"]').should(
-        "have.value",
-        data.validInput.password,
-      );
-      cy.get('input[type="date"]').should("have.value", data.validInput.date);
-      */
-    });
+    inventory_Page.ordenarProducto(this.data_cases.orden);
+    inventory_Page.seleccionarProducto(this.data_cases.indice_producto, this.data_cases.cantidad_esperada);    
+    inventory_Page.abrirCarrito(this.data_cases.producto_esperado);
+    
+    checkout_Page.confirmarCheckout();
+    checkout_Page.completarDatosUsuario(this.data_user.firstName, this.data_user.lastName, this.data_user.postalCode);
+    checkout_Page.finalizarCompra(this.data_cases.producto_esperado);
   });
 });

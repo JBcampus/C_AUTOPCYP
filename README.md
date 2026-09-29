@@ -32,6 +32,7 @@ npm run cy:run:headed -- --spec 'cypress/e2e/clase3/inputs-fixture.cy.ts'
 ## Tarea 2
 
 npm run tarea2
+npm run cy:run:headed -- --spec 'cypress/e2e/tarea2/tarea2.cy.ts'
 
 ## Clase 4
 
