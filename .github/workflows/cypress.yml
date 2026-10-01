@@ -2,7 +2,7 @@ name: CI Cypress
 
 on:
   push:
-    branches: ["alumno/abravoc"]
+    branches: ["main"]
   pull_request:
     branches: ["dev"]
 
@@ -25,12 +25,12 @@ jobs:
         run: npm ci
       - name: Run Cypress E2E
         run: npm run cy:run:taller5:spec3
-        run: npm run allure:generate:ci
+      - run: npm run allure:generate:ci
       - name: Upload artifacts reports and screenshots
         if: always()
         uses: actions/upload-artifact@v7
         with:
           name: cypress-artifacts
           path: |
-          artifacts
-        retention-days: 1
+            artifacts
+          retention-days: 1
