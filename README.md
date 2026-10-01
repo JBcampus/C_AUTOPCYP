@@ -28,3 +28,13 @@ npm run cy:run:headed
 
 Ejecución del taller 2:
 npm run cy:run:taller2
+
+## Reporte Mochawesome
+
+Generar el reporte y sus videos ejecutando Cypress en modo run:
+
+npm run cy:run
+
+Después abrir `artifacts\mochawesome-report\index.html`. El reporte se actualiza
+en esa ruta en cada ejecución; los videos de la ejecución actual se copian junto
+al HTML para que sus enlaces funcionen.

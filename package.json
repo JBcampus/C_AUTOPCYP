@@ -22,7 +22,11 @@
     "cy:run:tarea2": "npm run cy:run:headed -- --spec 'cypress/e2e/tarea2/tarea2.cy.ts' --no-exit",
     "cy:run:taller5:spec1": "npm run cy:run -- --spec 'cypress/e2e/clase5/01-login-fixture.cy.ts'",
     "cy:run:taller5:spec2": "npm run cy:run -- --spec 'cypress/e2e/clase5/02-login-data-drive-allure.cy.ts'",
-    "allure:generate": "node --input-type=module -e \"import { rmSync } from 'node:fs'; rmSync('artifacts/allure-report', { recursive: true, force: true });\" && npx allure generate artifacts/allure-results --output artifacts/allure-report --open"
+    "cy:run:taller5:spec3": "npm run cy:run -- --spec 'cypress/e2e/clase5/03-secure-area-session.cy.ts'",
+    "allure:generate2": "node --input-type=module -e \"import { rmSync } from 'node:fs'; rmSync('artifacts/allure-report', { recursive: true, force: true });\" && npx allure generate artifacts/allure-results --output artifacts/allure-report --open",
+    "allure:generate": "rmdir /s /q artifacts\\allure-report & npx allure generate --output artifacts\\allure-report && npx allure open artifacts\\allure-report",
+    "allure:clean-generate": "rimraf artifacts/allure-report && npx allure generate --output artifacts\\allure-report && npx allure open artifacts\\allure-report",
+    "allure:generate:ci": "rimraf artifacts/allure-report && npx allure generate --output artifacts\\allure-report"
   },
   "keywords": [],
   "author": "Adelina B.",
@@ -34,5 +38,9 @@
     "cypress": "^16.1.0",
     "tsx": "^4.23.13",
     "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "cypress-mochawesome-reporter": "^5.0.0",
+    "rimraf": "^6.1.3"
   }
 }

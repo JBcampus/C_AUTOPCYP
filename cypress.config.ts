@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { defineConfig } from "cypress";
 import { allureCypress } from "allure-cypress/reporter";
+import mochawesomeReporter from "cypress-mochawesome-reporter/plugin";
 
 export default defineConfig({
   allowCypressEnv: true,
@@ -10,15 +11,32 @@ export default defineConfig({
   videosFolder: "artifacts/videos",
   downloadsFolder: "artifacts/downloads",
   screenshotOnRunFailure: true,
-  video: false,
+  video: true,
   trashAssetsBeforeRuns: false,
+
+  reporter: "cypress-mochawesome-reporter",
+  reporterOptions: {
+    reportDir: "artifacts/mochawesome-report",
+    charts: true,
+    reportPageTitle: "JB Reporte Cypress E2E",
+    embeddedScreenshots: true,
+    overwrite: true,
+  },
 
   e2e: {
     baseUrl: "https://practice.expandtesting.com",
     viewportWidth: 1280,
     setupNodeEvents(on, config) {
+      on("before:run", async () => {
+        await fs.promises.rm(
+          path.resolve(config.projectRoot, config.videosFolder),
+          { recursive: true, force: true },
+        );
+      });
+
       allureCypress(on, config, {
         resultsDir: "artifacts/allure-results",
+        videoOnFailOnly: false,
       });
 
       on("after:screenshot", (details) => {
@@ -48,6 +66,8 @@ export default defineConfig({
 
         return { path: targetPath };
       });
+
+      mochawesomeReporter(on);
 
       return config;
     },
