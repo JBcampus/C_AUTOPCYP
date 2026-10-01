@@ -11,7 +11,7 @@ export default defineConfig({
   videosFolder: "artifacts/videos",
   downloadsFolder: "artifacts/downloads",
   screenshotOnRunFailure: true,
-  video: true,
+  video: false,
   trashAssetsBeforeRuns: false,
 
   reporter: "cypress-mochawesome-reporter",

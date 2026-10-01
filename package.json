@@ -27,7 +27,7 @@
     "allure:generate2": "node --input-type=module -e \"import { rmSync } from 'node:fs'; rmSync('artifacts/allure-report', { recursive: true, force: true });\" && npx allure generate artifacts/allure-results --output artifacts/allure-report --open",
     "allure:generate": "rmdir /s /q artifacts\\allure-report & npx allure generate --output artifacts\\allure-report && npx allure open artifacts\\allure-report",
     "allure:clean-generate": "rimraf artifacts/allure-report && npx allure generate --output artifacts\\allure-report && npx allure open artifacts\\allure-report",
-    "allure:generate:ci": "rimraf artifacts/allure-report && npx allure generate --output artifacts\\allure-report"
+    "allure:generate:ci": "rimraf artifacts/allure-report & npx allure generate --output artifacts\\allure-report"
   },
   "keywords": [],
   "author": "Adelina B.",
