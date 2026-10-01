@@ -32,5 +32,5 @@ jobs:
         with:
           name: cypress-artifacts
           path: |
-          artifacts
-        retention-days: 1
+            artifacts
+          retention-days: 1
