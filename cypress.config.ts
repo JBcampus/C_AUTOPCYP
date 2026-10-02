@@ -32,6 +32,10 @@ export default defineConfig({
           path.resolve(config.projectRoot, config.videosFolder),
           { recursive: true, force: true },
         );
+        await fs.promises.rm(
+          path.resolve(config.projectRoot, "artifacts", "allure-results"),
+          { recursive: true, force: true },
+        );
       });
 
       allureCypress(on, config, {
@@ -40,19 +44,24 @@ export default defineConfig({
       });
 
       on("after:screenshot", (details) => {
-        if (details.specName !== "tarea2.cy.ts") {
+        const isTarea2Screenshot = details.specName === "tarea2.cy.ts";
+        const isIntegradorScreenshot = details.specName === "integrador.cy.ts";
+        if (!isTarea2Screenshot && !isIntegradorScreenshot) {
           return;
         }
 
         const targetDirectory = path.resolve(
           config.projectRoot,
           "artifacts",
-          "tarea2",
+          isTarea2Screenshot ? "tarea2" : "integrador",
         );
         const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+        const screenshotName = isTarea2Screenshot
+          ? `compra-finalizada-${timestamp}.png`
+          : `${path.basename(details.name ?? "screenshot")}.png`;
         const targetPath = path.join(
           targetDirectory,
-          `compra-finalizada-${timestamp}.png`,
+          screenshotName,
         );
 
         fs.mkdirSync(targetDirectory, { recursive: true });
