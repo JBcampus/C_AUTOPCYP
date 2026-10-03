@@ -4,7 +4,6 @@ import { createSauceDemoUserSession } from "../../helpers/saucedemo-session.help
 import { CartPage } from "../../pages/integrador/CartPage";
 import { CheckoutPage } from "../../pages/integrador/CheckoutPage";
 import { InventoryPage } from "../../pages/integrador/InventoryPage";
-import { LoginPage } from "../../pages/integrador/LoginPage";
 
 interface IntegradorCase {
   name: string;
@@ -14,7 +13,6 @@ interface IntegradorCase {
 }
 
 const integradorCases = integradorCasesJson as IntegradorCase[];
-const loginPage = new LoginPage();
 const inventoryPage = new InventoryPage();
 const cartPage = new CartPage();
 const checkoutPage = new CheckoutPage();
@@ -22,8 +20,9 @@ const checkoutPage = new CheckoutPage();
 describe("Integrador - compra en SauceDemo", () => {
   beforeEach(() => {
     createSauceDemoUserSession();
-    loginPage.visit();
-    loginPage.login("standard_user", "secret_sauce");
+    cy.visit("https://www.saucedemo.com/inventory.html", {
+      failOnStatusCode: false,
+    });
     inventoryPage.assertLoaded();
   });
 
