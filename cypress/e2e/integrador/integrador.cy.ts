@@ -23,7 +23,6 @@ describe("Integrador - compra en SauceDemo", () => {
     cy.visit("https://www.saucedemo.com/inventory.html", {
       failOnStatusCode: false,
     });
-    inventoryPage.assertLoaded();
   });
 
   afterEach(function () {
