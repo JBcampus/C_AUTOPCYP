@@ -1,3 +1,5 @@
+import * as allure from "allure-js-commons";
+
 export class LoginPage {
   private readonly url = "/login";
   private readonly selectors = {
@@ -19,8 +21,11 @@ export class LoginPage {
 
   /**Realizar acción de login */
   login(username: string, password: string): void {
-    cy.getById(this.selectors.usernameInput).clear().type(username);
-    cy.getById(this.selectors.passwordInput).clear().type(password);
-    cy.getById(this.selectors.loginButton).click();
+    allure.logStep("step: Ingresar credenciales y hacer click en login");
+    allure.step("Autenticación de usuario", () => {
+      cy.getById(this.selectors.usernameInput).clear().type(username);
+      cy.getById(this.selectors.passwordInput).clear().type(password);
+      cy.getById(this.selectors.loginButton).click();
+    });
   }
 }

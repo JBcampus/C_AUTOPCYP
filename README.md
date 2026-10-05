@@ -52,3 +52,15 @@ le colocaremos la ruta donde vamos a trabajar
 
 baseUrl: "https://practice.expandtesting.com",
 viewportWidth: 1280,
+
+npm istall-D allure allure-cypress --verbose
+
+git remote add origin https://github.com/JBcampus/C_AUTOPCYP
+
+npx allure generate --output artifacts/allure-report
+
+npx allure open artifacts/allure-report
+
+npm install -d rimraf
+
+npm install -d cypress-mochawesome-reporter --verbose

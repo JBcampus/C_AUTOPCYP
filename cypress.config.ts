@@ -1,8 +1,9 @@
 import { defineConfig } from "cypress";
 import { allureCypress } from "allure-cypress/reporter";
-
+import mochawesomeReporter from "cypress-mochawesome-reporter/plugin";
 export default defineConfig({
-  //allowCypressEnd: true, //allowCypressEnd dejó de existir oficialmente a partir de Cypress 16.0.0 (septiembre de 2026).
+  allowCypressEnd: true,
+  //  //allowCypressEnd dejó de existir oficialmente a partir de Cypress 16.0.0 (septiembre de 2026).
   //configuracion comportamiento de la herramienta
   screenshotsFolder: "artifacts/screenshots",
   videosFolder: "artifacts/videos",
@@ -11,6 +12,14 @@ export default defineConfig({
   video: true,
   trashAssetsBeforeRuns: false,
 
+  reporter: "cypress-mochawesome-reporter",
+  reporterOptions: {
+    reportDir: "artifacts/mochawesome-report",
+    charts: true,
+    reportPageTitle: "JB Reporte Cypress E2E",
+    embeddedScreenshots: true,
+    overwrite: true,
+  },
   //configuracion comportamiento de las pruebas
   e2e: {
     baseUrl: "https://practice.expandtesting.com",
@@ -25,6 +34,9 @@ export default defineConfig({
       allureCypress(on, config, {
         resultsDir: "artifacts/allure-results", //Ruta de salida de reportes
       });
+
+      mochawesomeReporter(on);
+
       return config;
     },
   },

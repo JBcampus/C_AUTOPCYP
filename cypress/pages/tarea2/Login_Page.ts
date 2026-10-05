@@ -4,7 +4,7 @@ export class Login_Page {
   private readonly loginButton = "login-button";
 
   /** Realizar acción de login
-   *  Para fines de practica del taller, se utiliza comando personalizado "getByDataTest".
+   *  Para fines de practica del taller, se utiliza comando personalizado "getByDataTesting".
    */
   iniciarSesion(username: string, password: string): void {
     cy.getByDataTesting(this.usernameInput)
