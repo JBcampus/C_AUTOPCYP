@@ -6,8 +6,8 @@ export class LoginPage {
   }
 
   login(username: string, password: string): void {
-    cy.getByDataTest("username").clear().type(username);
-    cy.getByDataTest("password").clear().type(password, { log: false });
-    cy.getByDataTest("login-button").click();
+    cy.getByDataTesting("username").clear().type(username);
+    cy.getByDataTesting("password").clear().type(password, { log: false });
+    cy.getByDataTesting("login-button").click();
   }
 }
