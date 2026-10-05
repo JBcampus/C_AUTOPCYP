@@ -31,7 +31,8 @@
     "allure:generate": "rmdir /s /q artifacts\\allure-report & npx allure generate --output artifacts\\allure-report && npx allure open artifacts\\allure-report",
     "allure:clean-generate": "rimraf artifacts/allure-report && npx allure generate --output artifacts\\allure-report && npx allure open artifacts\\allure-report",
     "allure:generate:ci": "rimraf artifacts/allure-report & npx allure generate --output artifacts\\allure-report",
-    "cy:run:trabajointegrador": "npm run cy:run:headed -- --spec 'cypress/e2e/integrador/integrador.cy.ts'"
+    "cy:run:trabajointegrador": "npm run cy:run:headed -- --spec cypress/e2e/integrador/integrador.cy.ts",
+    "allure:integrador": "rimraf artifacts/allure-results artifacts/allure-report && npm run cy:run:trabajointegrador && npx allure generate --output artifacts/allure-report && npx allure open artifacts/allure-report"
   },
   "keywords": [],
   "author": "Daniel Q.",
