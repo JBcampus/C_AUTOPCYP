@@ -39,3 +39,8 @@ npm run cy:run:headed -- --spec 'cypress/e2e/tarea2/tarea2.cy.ts'
 npm run cy:run:headed -- --spec 'cypress/e2e/clase4/inputs-estabilidad.cy.ts'
 npm run cy:run:headed -- --spec 'cypress/e2e/clase4/dropdown-colecciones.cy.ts'
 npm run cy:run:headed -- --spec 'cypress/e2e/clase4/login-pom-intercept.cy.ts'
+
+## Tarea 3 Integrador
+
+npm run integrador
+npm run cy:run:headed -- --spec 'cypress/e2e/integrador/integrador.cy.ts'

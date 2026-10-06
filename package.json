@@ -27,7 +27,10 @@
     "cy:run:taller5:spec3": "npm run cy:run:electron -- --spec 'cypress/e2e/clase5/03-secure-area-session.cy.ts'",
     "allure:generate": "rmdir /s /q artifacts\\allure-report & npx allure generate --output artifacts\\allure-report && npx allure open artifacts\\allure-report",
     "allure:generate:ci": "rimraf artifacts/allure-report && npx allure generate --output artifacts\\allure-report",
-    "allure:clean-generate": "rimraf artifacts/allure-report & npx allure generate --output artifacts\\allure-report & npx allure open artifacts\\allure-report"
+    "allure:clean-generate": "rimraf artifacts/allure-report & npx allure generate --output artifacts\\allure-report & npx allure open artifacts\\allure-report",
+    "integrador:open": "npm run cy:open 'cypress/e2e/integrador/integrador.cy.ts'",
+    "integrador:spec1": "npm run cy:run:headed -- --spec 'cypress/e2e/integrador/integrador.cy.ts'"
+    
   },
   "keywords": [],
   "author": "Sergio Barrios",

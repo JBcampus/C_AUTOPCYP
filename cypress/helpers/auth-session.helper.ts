@@ -1,9 +1,8 @@
 import { LoginPage } from "../pages/PracticeExpTest/clase5/LoginPage";
 const loginPage = new LoginPage();
+
 export const createPracticeUserSession = (): void => {
-  cy.session(
-    "practice-user",
-    () => {
+  cy.session("practice-user", () => {
       loginPage.visit();
       loginPage.login("practice", "SuperSecretPassword!");
       cy.url().should("include", "/secure");
