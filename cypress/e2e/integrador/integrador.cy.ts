@@ -1,83 +1,95 @@
 import * as allure from "allure-js-commons";
-import integradorCasesJson from "../../fixtures/integrador/dataproductos.json";
-import { createSauceDemoUserSession } from "../../helpers/saucedemo-session.helper";
-import { CartPage } from "../../pages/integrador/CartPage";
-import { CheckoutPage } from "../../pages/integrador/CheckoutPage";
-import { InventoryPage } from "../../pages/integrador/InventoryPage";
+import datosCliente from "../../fixtures/integrador/datos_cliente.json";
+import casosProductosJson from "../../fixtures/integrador/casos_productos.json";
+import { crearSesionUsuarioSauceDemo } from "../../helpers/sesion-saucedemo.helper";
+import { PaginaCarritoIntegrador } from "../../pages/integrador/PaginaCarritoIntegrador";
+import { PaginaCheckoutIntegrador } from "../../pages/integrador/PaginaCheckoutIntegrador";
+import { PaginaInventarioIntegrador } from "../../pages/integrador/PaginaInventarioIntegrador";
 
-interface IntegradorCase {
-  name: string;
-  sort: string;
-  pick: number[];
-  expectedBadge: string;
+interface CasoIntegrador {
+  nombreCaso: string;
+  ordenProductos: string;
+  indicesProductos: number[];
+  cantidadEsperadaCarrito: string;
 }
 
-const integradorCases = integradorCasesJson as IntegradorCase[];
-const inventoryPage = new InventoryPage();
-const cartPage = new CartPage();
-const checkoutPage = new CheckoutPage();
+const casosIntegrador = casosProductosJson as CasoIntegrador[];
+const paginaInventario = new PaginaInventarioIntegrador();
+const paginaCarrito = new PaginaCarritoIntegrador();
+const paginaCheckout = new PaginaCheckoutIntegrador();
 
-describe("Integrador - compra en SauceDemo", () => {
+describe("Integrador: compra en SauceDemo", () => {
   beforeEach(() => {
-    createSauceDemoUserSession();
+    crearSesionUsuarioSauceDemo();
     cy.visit("https://www.saucedemo.com/inventory.html", {
       failOnStatusCode: false,
     });
   });
 
   afterEach(function () {
-    const testName = this.currentTest?.title ?? "test";
-    const screenshotName = testName
+    const tituloPrueba = this.currentTest?.title ?? "prueba";
+    // El título se normaliza para que sea válido como parte de una ruta.
+    const nombreCaptura = tituloPrueba
       .replace(/[<>:"/\\|?*\x00-\x1f]/g, "-")
       .replace(/\s+/g, "-");
 
-    cy.screenshot(`integrador/${screenshotName}`);
+    cy.screenshot(`integrador/${nombreCaptura}`);
   });
 
-  it("Test 1 - inicia sesión y valida inventario vacío", () => {
+  it("Inicia sesión y valida que el carrito esté vacío", () => {
     allure.feature("Integrador");
-    allure.story("Login tradicional con sesión");
-    allure.parameter("username", "standard_user");
-    allure.parameter("password", "masked", { mode: "masked" });
+    allure.story("Inicio de sesión con usuario estándar");
+    allure.parameter("usuario", "standard_user");
+    allure.parameter("contraseña", "enmascarada", { mode: "masked" });
 
-    allure.logStep("Validar URL y título de inventario");
-    inventoryPage.assertLoaded();
+    allure.logStep("Validar la URL y el título del inventario");
+    paginaInventario.validarCarga();
 
-    allure.logStep("Validar que no hay productos en el carrito");
-    inventoryPage.assertCartEmpty();
+    allure.logStep("Validar que el carrito esté vacío");
+    paginaInventario.validarCarritoVacio();
   });
 
-  integradorCases.forEach((testCase) => {
-    it(`Test 2 - ${testCase.name}`, () => {
+  casosIntegrador.forEach((casoPrueba) => {
+    it(casoPrueba.nombreCaso, () => {
       allure.feature("Integrador");
-      allure.story("Ordenar productos y completar compra");
-      allure.parameter("sort", testCase.sort);
-      allure.parameter("pick", JSON.stringify(testCase.pick));
-      allure.parameter("expectedBadge", testCase.expectedBadge);
+      allure.story("Ordenar los productos y completar la compra");
+      allure.parameter("ordenProductos", casoPrueba.ordenProductos);
+      allure.parameter(
+        "indicesProductos",
+        JSON.stringify(casoPrueba.indicesProductos),
+      );
+      allure.parameter(
+        "cantidadEsperadaCarrito",
+        casoPrueba.cantidadEsperadaCarrito,
+      );
 
-      allure.logStep("Validar inventario");
-      inventoryPage.assertLoaded();
+      allure.logStep("Validar que el inventario esté cargado");
+      paginaInventario.validarCarga();
 
-      allure.logStep(`Ordenar productos: ${testCase.sort}`);
-      inventoryPage.sort(testCase.sort);
+      allure.logStep(`Ordenar productos: ${casoPrueba.ordenProductos}`);
+      paginaInventario.ordenarProductos(casoPrueba.ordenProductos);
 
       allure.logStep(
-        `Agregar productos seleccionados: ${testCase.pick.join(", ")}`,
+        `Agregar productos seleccionados: ${casoPrueba.indicesProductos.join(", ")}`,
       );
-      testCase.pick.forEach((index) => inventoryPage.addProductByIndex(index));
-      inventoryPage.assertCartQuantity(testCase.expectedBadge);
+      casoPrueba.indicesProductos.forEach((indiceProducto) =>
+        paginaInventario.agregarProductoPorIndice(indiceProducto),
+      );
+      paginaInventario.validarCantidadEnCarrito(
+        casoPrueba.cantidadEsperadaCarrito,
+      );
 
-      allure.logStep("Abrir carrito e iniciar checkout");
-      inventoryPage.openCart();
-      cartPage.checkout();
+      allure.logStep("Abrir el carrito e iniciar el proceso de pago");
+      paginaInventario.abrirCarrito();
+      paginaCarrito.iniciarCheckout();
 
-      allure.logStep("Completar información ficticia");
-      checkoutPage.fillInformation("Adelina", "Prueba", "110111");
-      checkoutPage.continue();
-      checkoutPage.finish();
+      allure.logStep("Completar los datos del cliente");
+      paginaCheckout.completarInformacion(datosCliente);
+      paginaCheckout.continuarCheckout();
+      paginaCheckout.finalizarCompra();
 
-      allure.logStep("Validar compra exitosa");
-      checkoutPage.assertPurchaseSuccessful();
+      allure.logStep("Validar que la compra se completó correctamente");
+      paginaCheckout.validarCompraExitosa();
     });
   });
 });

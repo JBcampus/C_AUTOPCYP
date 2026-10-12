@@ -1,0 +1,20 @@
+[
+  {
+    "nombreCaso": "Compra por precio descendente con productos 1, 3 y 5",
+    "ordenProductos": "hilo",
+    "indicesProductos": [0, 2, 4],
+    "cantidadEsperadaCarrito": "3"
+  },
+  {
+    "nombreCaso": "Compra por precio ascendente con productos 2 y 4",
+    "ordenProductos": "lohi",
+    "indicesProductos": [1, 3],
+    "cantidadEsperadaCarrito": "2"
+  },
+  {
+    "nombreCaso": "Compra con orden alfabético y un producto",
+    "ordenProductos": "az",
+    "indicesProductos": [0],
+    "cantidadEsperadaCarrito": "1"
+  }
+]

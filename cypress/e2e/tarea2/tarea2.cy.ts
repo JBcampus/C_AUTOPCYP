@@ -1,49 +1,53 @@
-import { Login_Page } from "../../pages/tarea2/Login_Page";
-import { Inventory_Page } from "../../pages/tarea2/Inventory_Page";
-import { CheckOut_Page } from "../../pages/tarea2/CheckOut_Page";
+import { PaginaInicioSesionTarea2 } from "../../pages/tarea2/PaginaInicioSesionTarea2";
+import { PaginaInventarioTarea2 } from "../../pages/tarea2/PaginaInventarioTarea2";
+import { PaginaFinalizarCompraTarea2 } from "../../pages/tarea2/PaginaFinalizarCompraTarea2";
 
-const login_Page = new Login_Page();
-const inventory_Page = new Inventory_Page();
-const checkout_Page = new CheckOut_Page();
+const paginaInicioSesion = new PaginaInicioSesionTarea2();
+const paginaInventario = new PaginaInventarioTarea2();
+const paginaFinalizarCompra = new PaginaFinalizarCompraTarea2();
 
-describe("SauceDemo Automatizacion", () => {
+describe("Tarea 2: compra en SauceDemo", () => {
   before(() => {
-    cy.log("#Inicio de suite: SauceDemo Automatizacion");
-    //cargamos los datos de prueba de productos y usuario
-    cy.fixture("tarea2/data_cases.json").as("data_cases");
-    cy.fixture("tarea2/data_user.json").as("data_user");
+    cy.log("Inicio de la suite de compra en SauceDemo.");
+    cy.fixture("tarea2/caso_compra.json").as("casoCompra");
+    cy.fixture("tarea2/datos_cliente.json").as("datosCliente");
   });
   beforeEach(() => {
-    cy.log("##Inicio de Caso de Prueba.");
-    //abrir pagina con variable de entorno en "cypress.config.ts": baseUrl_SD: "https://www.saucedemo.com",
+    cy.log("Inicio del caso de prueba.");
     cy.visit(Cypress.expose("baseUrl_SD"));
     cy.url().should("include", "saucedemo.com");
   });
   afterEach(() => {
-    cy.log("##Fin de Caso de prueba.");
+    cy.log("Fin del caso de prueba.");
   });
   after(() => {
-    cy.screenshot("Tarea2_Test01_Compra Producto Exitosa");
-    cy.log("#Fin de suite: SauceDemo Automatizacion");
+    cy.screenshot("Tarea2_Compra_Exitosa");
+    cy.log("Fin de la suite de compra en SauceDemo.");
   });
 
-  it("Test 01: Compra Producto Exitosa", function () {
-    login_Page.iniciarSesion(this.data_user.usuario, this.data_user.password);
-    login_Page.abrirPaginaInventarioProductos();
-
-    inventory_Page.ordenarProducto(this.data_cases.orden);
-    inventory_Page.seleccionarProducto(
-      this.data_cases.indice_producto,
-      this.data_cases.cantidad_esperada,
+  // La sintaxis function de Mocha permite acceder a los fixtures mediante this.
+  it("Completa correctamente la compra de un producto", function () {
+    paginaInicioSesion.iniciarSesion(
+      this.datosCliente.usuario,
+      this.datosCliente.contrasena,
     );
-    inventory_Page.abrirCarrito(this.data_cases.producto_esperado);
+    paginaInicioSesion.validarPaginaDeProductos();
 
-    checkout_Page.confirmarCheckout();
-    checkout_Page.completarDatosUsuario(
-      this.data_user.firstName,
-      this.data_user.lastName,
-      this.data_user.postalCode,
+    paginaInventario.ordenarProductos(this.casoCompra.ordenProductos);
+    paginaInventario.agregarProducto(
+      this.casoCompra.indiceProducto,
+      this.casoCompra.cantidadEsperada,
     );
-    checkout_Page.finalizarCompra(this.data_cases.producto_esperado);
+    paginaInventario.abrirCarritoYValidarProducto(
+      this.casoCompra.productoEsperado,
+    );
+
+    paginaFinalizarCompra.confirmarCheckout();
+    paginaFinalizarCompra.completarDatosCliente(
+      this.datosCliente.nombre,
+      this.datosCliente.apellido,
+      this.datosCliente.codigoPostal,
+    );
+    paginaFinalizarCompra.finalizarCompra(this.casoCompra.productoEsperado);
   });
 });

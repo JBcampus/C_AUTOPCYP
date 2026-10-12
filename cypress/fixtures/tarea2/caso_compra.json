@@ -1,0 +1,7 @@
+{
+  "descripcionCaso": "orden_az_agregar_tercer_producto",
+  "ordenProductos": "az",
+  "indiceProducto": 2,
+  "productoEsperado": "Sauce Labs Bolt T-Shirt",
+  "cantidadEsperada": "1"
+}
